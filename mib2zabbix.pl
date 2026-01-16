@@ -472,7 +472,7 @@ sub node_to_item {
     }
 
     # Set storage type to Delta for MIB counter types
-    if ( $node->{ type } ~~ ['COUNTER', 'COUNTER32', 'COUNTER64']) {
+    if ( $node->{ type } eq 'COUNTER' || $node->{ type } eq 'COUNTER32' || $node->{ type } eq 'COUNTER64' ) {
         $item->{ delta } = ZBX_ITEM_STORE_SPEED;
 
         if ($item->{ units } =~ /^s$/) {
